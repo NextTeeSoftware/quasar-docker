@@ -22,12 +22,16 @@ USER root
 #    yarn cache clean && \
 VOLUME [ "/home/node/app" ]
 
+
+RUN cd /home/node/app
+
 RUN yarn install && \
+	yarn cache clean && \
 	rm -rf /var/cache/apk/* /tmp/*
 
 #RUN quasar dev	
 	
 #EXPOSE 3000
-#CMD [ "npm", "start" ]
-CMD /bin/sh
+CMD [ "quasar", "dev" ]
+#CMD /bin/sh
 
